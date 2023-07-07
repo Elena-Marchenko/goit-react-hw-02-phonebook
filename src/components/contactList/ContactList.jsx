@@ -1,6 +1,15 @@
-// import React from 'react';
-// import PropTypes from 'prop-types';
+import React from 'react';
 
-// const ContactList = ({ contacts }) =><ul>{contacts.map({id} => (<li key={contacts.id}></li>))}</ul>;
-// const ContactList = ({ contacts }) => <ul>{contacts.map({})}</ul>;
-// export default ContactList;
+const ContactList = ({ items }) => {
+  return (
+    <div>
+      <ul>
+        {items.map(item => (
+          <li key={item.id}>{item.name}</li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default ContactList;
