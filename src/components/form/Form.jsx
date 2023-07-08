@@ -4,12 +4,17 @@ import { nanoid } from 'nanoid';
 class Form extends Component {
   state = {
     name: '',
+    number: '',
   };
 
   nameInputId = nanoid();
 
   handleChange = e => {
     const { name, value } = e.currentTarget;
+    // console.log(e.currentTarget);
+    // console.log(e.currentTarget.name);
+    // console.log(e.currentTarget.value);
+
     this.setState({
       [name]: value,
     });
@@ -23,7 +28,10 @@ class Form extends Component {
   };
 
   reset = () => {
-    this.setState({ name: '' });
+    this.setState({
+      name: '',
+      number: '',
+    });
   };
 
   render() {
@@ -37,7 +45,23 @@ class Form extends Component {
             id={this.nameInputId}
             value={this.state.name}
             onChange={this.handleChange}
+            pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+            required
           ></input>
+        </label>
+        <label htmlFor={this.nameInputId}>
+          Number
+          <input
+            type="tel"
+            name="number"
+            id={this.nameInputId}
+            value={this.state.number}
+            onChange={this.handleChange}
+            pattern="+?d{1,4}?[ .-s]?(?d{1,3}?)?[ .-s]?d{1,4}[ .-s]?d{1,4}[ .-s]?d{1,9}"
+            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+            required
+          />
         </label>
         <button type="submit">Add contact</button>
       </form>
