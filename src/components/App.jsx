@@ -21,9 +21,20 @@ class App extends Component {
       ...data,
     };
 
-    this.setState(prevState => ({
-      contacts: [...prevState.contacts, item],
-    }));
+    const { contacts } = this.state;
+    const contactForDelete = contacts.find(
+      contact => contact.name === item.name
+    );
+
+    if (contactForDelete) {
+      alert(`${item.name} is already in contacts.`);
+
+      return;
+    } else {
+      this.setState(prevState => ({
+        contacts: [...prevState.contacts, item],
+      }));
+    }
   };
 
   onChangeFilter = e => {
