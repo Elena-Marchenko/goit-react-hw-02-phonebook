@@ -12,7 +12,7 @@ class Form extends Component {
   handleChange = e => {
     const { name, value } = e.currentTarget;
     // console.log(e.currentTarget);
-    // console.log(e.currentTarget.name);
+    // console.log(e.currentTarget.name.text);
     // console.log(e.currentTarget.value);
 
     this.setState({

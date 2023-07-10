@@ -1,13 +1,16 @@
 import React from 'react';
+import ElementList from '../elementList/ElementList';
 
-const ContactList = ({ items }) => {
+const ContactList = ({ items, onDeleteContact }) => {
   return (
     <div>
       <ul>
         {items.map(item => (
-          <li key={item.id}>
-            {item.name}:{item.number}
-          </li>
+          <ElementList
+            item={item}
+            key={item.id}
+            onDeleteContact={onDeleteContact}
+          />
         ))}
       </ul>
     </div>
