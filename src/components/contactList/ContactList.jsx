@@ -1,10 +1,11 @@
 import React from 'react';
-import ElementList from '../elementList/ElementList';
+import ElementList from '../elementList';
+import css from './ContactList.module.css';
 
 const ContactList = ({ items, onDeleteContact }) => {
   return (
     <div>
-      <ul>
+      <ul className={css.ul}>
         {items.map(item => (
           <ElementList
             item={item}

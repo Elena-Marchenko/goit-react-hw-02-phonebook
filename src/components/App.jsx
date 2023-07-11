@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
-import Form from './form/Form';
-import Filter from './filter/Filter';
-import ContactList from './contactList/ContactList';
-// import './App.module.css';
+import Form from './form';
+import Filter from './filter';
+import ContactList from './contactList';
+import './App.module.css';
+import css from './App.module.css';
+
 class App extends Component {
   state = {
     contacts: [
@@ -47,18 +49,23 @@ class App extends Component {
     }));
   };
 
-  render() {
-    const { filter, contacts } = this.state;
+  getVisibleContacts = () => {
+    const { contacts, filter } = this.state;
     const normalaizFilter = filter.toLowerCase();
 
-    const visibleContacts = contacts.filter(
+    return contacts.filter(
       contact =>
         contact.name.toLowerCase().includes(normalaizFilter) ||
         contact.number.includes(normalaizFilter)
     );
+  };
+
+  render() {
+    const { filter } = this.state;
+    const visibleContacts = this.getVisibleContacts();
 
     return (
-      <div>
+      <div className={css.section}>
         <h1>Phonebook</h1>
         <Form onSubmit={this.formSubmitHandler} />
 
