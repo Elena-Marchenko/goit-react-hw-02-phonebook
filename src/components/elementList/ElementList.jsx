@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import css from './ElenentList.module.css';
 
 const ElementList = ({ item, onDeleteContact }) => (
@@ -11,4 +12,13 @@ const ElementList = ({ item, onDeleteContact }) => (
     </button>
   </li>
 );
+
+ElementList.propTypes = {
+  item: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    number: PropTypes.string.isRequired,
+  }),
+  onDeleteContact: PropTypes.func.isRequired,
+};
+
 export default ElementList;
